@@ -8,33 +8,43 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0005_rename_changed_at_task_start_at_and_more'),
+        ("main", "0005_rename_changed_at_task_start_at_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='task',
-            name='assignee',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='assigned_tasks', to=settings.AUTH_USER_MODEL),
+            model_name="task",
+            name="assignee",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                related_name="assigned_tasks",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='task',
-            name='author',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='authored_tasks', to=settings.AUTH_USER_MODEL),
+            model_name="task",
+            name="author",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                related_name="authored_tasks",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='task',
-            name='finish_until',
+            model_name="task",
+            name="finish_until",
             field=models.DateTimeField(null=True),
         ),
         migrations.AlterField(
-            model_name='task',
-            name='priority',
+            model_name="task",
+            name="priority",
             field=models.IntegerField(null=True),
         ),
         migrations.AlterField(
-            model_name='task',
-            name='start_at',
+            model_name="task",
+            name="start_at",
             field=models.DateTimeField(null=True),
         ),
     ]
