@@ -21,7 +21,7 @@ class TaskAdmin(admin.ModelAdmin):
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'role')
+    list_display = ("username", "role")
 
 
 task_manager_admin_site.register(User, UserAdmin)

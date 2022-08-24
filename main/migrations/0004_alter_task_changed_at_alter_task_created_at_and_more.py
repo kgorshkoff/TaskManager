@@ -7,23 +7,23 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0003_tag_task'),
+        ("main", "0003_tag_task"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='task',
-            name='changed_at',
+            model_name="task",
+            name="changed_at",
             field=models.DateTimeField(),
         ),
         migrations.AlterField(
-            model_name='task',
-            name='created_at',
+            model_name="task",
+            name="created_at",
             field=models.DateTimeField(default=django.utils.timezone.now),
         ),
         migrations.AlterField(
-            model_name='task',
-            name='finish_until',
+            model_name="task",
+            name="finish_until",
             field=models.DateTimeField(),
         ),
     ]
