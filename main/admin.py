@@ -1,7 +1,27 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
 
-from main.models import User
+from main.models import Tag, Task, User
 
-# Register your models here.
-admin.site.register(User, UserAdmin)
+
+class TaskManagerAdminSite(admin.AdminSite):
+    pass
+
+
+task_manager_admin_site = TaskManagerAdminSite(name="Task manager admin")
+
+
+@admin.register(Tag, site=task_manager_admin_site)
+class TagAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Task, site=task_manager_admin_site)
+class TaskAdmin(admin.ModelAdmin):
+    pass
+
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'role')
+
+
+task_manager_admin_site.register(User, UserAdmin)
