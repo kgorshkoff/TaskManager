@@ -8,9 +8,16 @@ authors = ["dbp"]
 python = "^3.9"
 Django = "^4.1"
 psycopg2-binary = "^2.9.3"
+djangorestframework = "^3.13.1"
 
 [tool.poetry.dev-dependencies]
+pytest-django = "^4.5.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::django.utils.deprecation.RemovedInDjango50Warning",
+]
