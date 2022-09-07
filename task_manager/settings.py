@@ -17,6 +17,8 @@ import faker.config
 import factory
 import rollbar
 
+from task_manager.utils import strtobool
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -152,3 +154,11 @@ ROLLBAR = {
 }
 
 rollbar.init(**ROLLBAR)
+
+EMAIL_USE_SSL = strtobool(os.environ.get("EMAIL_USE_SSL", "0"))
+EMAIL_USE_TLS = strtobool(os.environ.get("EMAIL_USE_TLS", "0"))
+EMAIL_HOST = os.environ["EMAIL_HOST"]
+EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+EMAIL_PORT = os.environ["EMAIL_PORT"]
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL")
