@@ -29,7 +29,7 @@ services:
     tty: true
 
   db:
-    image: postgres:12.5-alpine
+    image: postgres:11.4
     environment: *db-config
     logging:
       driver: none
