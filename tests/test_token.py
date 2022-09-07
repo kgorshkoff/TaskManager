@@ -6,7 +6,6 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 from main.models import User
-from tests.factories.user_factory import UserFactory
 
 
 class TestJWTAuth(APITestCase):
