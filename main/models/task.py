@@ -8,7 +8,6 @@ from .tag import Tag
 class Task(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=512)
-    status = models.CharField(choices=Status.choices, max_length=20)
     priority = models.IntegerField(null=True)
 
     created_at = models.DateTimeField(default=timezone.now)
@@ -17,6 +16,9 @@ class Task(models.Model):
 
     tag = models.ManyToManyField(Tag)
 
+    status = models.ForeignKey(
+        "Status", related_name="task", on_delete=models.DO_NOTHING, null=True
+    )
     author = models.ForeignKey(
         "User", related_name="authored_tasks", on_delete=models.DO_NOTHING, null=True
     )

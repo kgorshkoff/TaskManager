@@ -1,13 +1,14 @@
 import factory
-from factory import PostGenerationMethodCall
-from factory.django import DjangoModelFactory
-
-from main.models import User
 
 
-class UserFactory(DjangoModelFactory):
+class UserFactory(factory.Factory):
     username = factory.Faker("user_name")
-    password = PostGenerationMethodCall("set_password", "password")
+    password = factory.Faker("password")
+    first_name = factory.Faker("first_name")
+    last_name = factory.Faker("last_name")
+    email = factory.Faker("email")
+    date_of_birth = factory.Faker("date")
+    phone = factory.Faker("msisdn")
 
     class Meta:
-        model = User
+        model = dict
