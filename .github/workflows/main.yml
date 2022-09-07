@@ -18,3 +18,7 @@ jobs:
           COVERAGE: true
           DJANGO_ENV: dev
         run: docker-compose --file docker-compose.ci.yml run --rm api pytest
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
