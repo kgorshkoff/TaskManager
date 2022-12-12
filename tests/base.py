@@ -18,6 +18,7 @@ class TestViewSetBase(APITestCase):
         super().setUpTestData()
         cls.user = cls.create_api_user()
         cls.client = APIClient()
+        cls.client.force_authenticate(user=cls.user)
 
     @staticmethod
     def create_api_user() -> User:
@@ -55,9 +56,13 @@ class TestViewSetBase(APITestCase):
         url = self.detail_url(obj["id"])
         response = self.client.put(url, data=attributes, user=user)
         assert response.status_code == HTTPStatus.OK, response.content
-        return response.data()
+        return response.json()
 
     def delete(self, obj: dict) -> None:
         url = self.detail_url(obj["id"])
         response = self.client.delete(url)
         assert response.status_code == HTTPStatus.NO_CONTENT
+
+    def request_create(self, attributes: dict, args: List[Union[str, int]] = None):
+        self.client.force_authenticate(user=self.user)
+        return self.client.post(self.list_url(args), data=attributes)

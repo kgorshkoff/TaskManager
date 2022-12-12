@@ -1,7 +1,10 @@
 import django_filters
+from django.conf import settings
+from django.core.validators import FileExtensionValidator
 from rest_framework import serializers
 
 from main.models import Status, Tag, Task, User
+from main.validators import FileMaxSizeValidator
 
 
 class UserFilter(django_filters.FilterSet):
@@ -9,7 +12,7 @@ class UserFilter(django_filters.FilterSet):
 
     class Meta:
         model = User
-        fields = ("username",)
+        fields = ("username", )
 
 
 class TaskFilter(django_filters.FilterSet):
@@ -33,6 +36,14 @@ class TaskFilter(django_filters.FilterSet):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    avatar_picture = serializers.FileField(
+        required=False,
+        validators=[
+            FileMaxSizeValidator(settings.UPLOAD_MAX_SIZES["avatar_picture"]),
+            FileExtensionValidator(["jpeg", "jpg", "png"]),
+        ],
+    )
+
     class Meta:
         model = User
         fields = (
@@ -43,6 +54,7 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "date_of_birth",
             "phone",
+            "avatar_picture"
         )
 
 
