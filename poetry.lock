@@ -239,6 +239,17 @@ python-jose = ["python-jose (==3.3.0)"]
 test = ["cryptography", "pytest-cov", "pytest-django", "pytest-xdist", "pytest", "tox"]
 
 [[package]]
+name = "drf-extensions"
+version = "0.7.1"
+description = "Extensions for Django REST Framework"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+djangorestframework = ">=3.9.3"
+
+[[package]]
 name = "drf-yasg"
 version = "1.21.3"
 description = "Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code."
@@ -449,8 +460,8 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-testing = ["pytest-benchmark", "pytest"]
-dev = ["tox", "pre-commit"]
+dev = ["pre-commit", "tox"]
+testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "psycopg2-binary"
@@ -691,7 +702,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "3783631206bd17293248d41a97b381181da54647836de239bf1683b6aaba3c44"
+content-hash = "b849369404922989dd843abed973278eee5a224674aea3ed5c0f538b49e70f2b"
 
 [metadata.files]
 asgiref = []
@@ -712,6 +723,7 @@ django-filter = []
 django-storages = []
 djangorestframework = []
 djangorestframework-simplejwt = []
+drf-extensions = []
 drf-yasg = []
 factory-boy = []
 faker = []

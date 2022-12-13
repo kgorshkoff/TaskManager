@@ -56,7 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
 ]
 
 ROOT_URLCONF = "task_manager.urls"
@@ -147,9 +147,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 factory.Faker._DEFAULT_LOCALE = "en_US"
 
 ROLLBAR = {
-    'access_token': '08c27701c6664e169e476926adc16f18',
-    'environment': 'development' if DEBUG else 'production',
-    'root': BASE_DIR,
+    "access_token": "08c27701c6664e169e476926adc16f18",
+    "environment": "development" if DEBUG else "production",
+    "root": BASE_DIR,
 }
 
 rollbar.init(**ROLLBAR)

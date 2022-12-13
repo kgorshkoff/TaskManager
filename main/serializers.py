@@ -12,7 +12,7 @@ class UserFilter(django_filters.FilterSet):
 
     class Meta:
         model = User
-        fields = ("username", )
+        fields = ("username",)
 
 
 class TaskFilter(django_filters.FilterSet):
@@ -54,8 +54,14 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "date_of_birth",
             "phone",
-            "avatar_picture"
+            "avatar_picture",
         )
+
+
+class CurrentUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("id", "first_name", "last_name", "email", "role", "username")
 
 
 class TagSerializer(serializers.ModelSerializer):
