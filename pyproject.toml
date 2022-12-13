@@ -18,6 +18,8 @@ rollbar = "^0.16.3"
 django-storages = "^1.13.1"
 boto3 = "^1.24.67"
 Pillow = "^9.2.0"
+celery = "^5.2.7"
+redis = "^4.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest-django = "^4.5.2"

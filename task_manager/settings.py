@@ -154,6 +154,9 @@ ROLLBAR = {
 
 rollbar.init(**ROLLBAR)
 
+CELERY_BROKER_URL = f"redis://{os.environ['REDIS_HOST']}:{os.environ['REDIS_PORT']}/0"
+CELERY_INCLUDE = ["task_manager.tasks"]
+
 if DJANGO_ENV != "dev":
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
     PUBLIC_FILE_STORAGE = "core.storage_backends.S3PublicStorage"
