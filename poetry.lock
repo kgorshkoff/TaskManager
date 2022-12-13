@@ -355,6 +355,17 @@ python-jose = ["python-jose (==3.3.0)"]
 test = ["cryptography", "pytest-cov", "pytest-django", "pytest-xdist", "pytest", "tox"]
 
 [[package]]
+name = "drf-extensions"
+version = "0.7.1"
+description = "Extensions for Django REST Framework"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+djangorestframework = ">=3.9.3"
+
+[[package]]
 name = "drf-yasg"
 version = "1.21.3"
 description = "Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code."
@@ -877,7 +888,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c391554ce69877c7b02839260ea12654ed047874273401980f4fde5a6d3c4dc3"
+content-hash = "3c143f3bf1bca30d8741a91ca6c4dfe7e57dad901e4ac302826b772209978f5c"
 
 [metadata.files]
 amqp = []
@@ -905,6 +916,7 @@ django-filter = []
 django-storages = []
 djangorestframework = []
 djangorestframework-simplejwt = []
+drf-extensions = []
 drf-yasg = []
 factory-boy = []
 faker = []

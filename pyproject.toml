@@ -20,6 +20,7 @@ boto3 = "^1.24.67"
 Pillow = "^9.2.0"
 celery = "^5.2.7"
 redis = "^4.4.0"
+drf-extensions = "^0.7.1"
 
 [tool.poetry.dev-dependencies]
 pytest-django = "^4.5.2"
