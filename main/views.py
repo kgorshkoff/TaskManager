@@ -1,14 +1,17 @@
+from typing import cast
+
 from rest_framework import viewsets
 
 from main.models import Status, Tag, Task, User
 from main.serializers import (
-    StatusSerializer,
+    CurrentUserSerializer, StatusSerializer,
     TagSerializer,
     TaskFilter,
     TaskSerializer,
     UserFilter,
     UserSerializer,
 )
+from main.services.single_resource import SingleResourceMixin, SingleResourceUpdateMixin
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -31,3 +34,13 @@ class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.prefetch_related("tags")
     serializer_class = TaskSerializer
     filterset_class = TaskFilter
+
+
+class CurrentUserViewSet(
+    SingleResourceMixin, SingleResourceUpdateMixin, viewsets.ModelViewSet
+):
+    serializer_class = CurrentUserSerializer
+    queryset = User.objects.order_by("id")
+
+    def get_object(self) -> User:
+        return cast(User, self.request.user)

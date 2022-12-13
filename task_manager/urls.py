@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import include, path, re_path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-from rest_framework import permissions, routers
+from rest_framework import permissions
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -24,7 +24,14 @@ from rest_framework_simplejwt.views import (
 )
 
 from main.admin import task_manager_admin_site
-from main.views import StatusViewSet, TagViewSet, TaskViewSet, UserViewSet
+from main.services.single_resource import BulkRouter
+from main.views import (
+    CurrentUserViewSet,
+    StatusViewSet,
+    TagViewSet,
+    TaskViewSet,
+    UserViewSet,
+)
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -39,11 +46,12 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-router = routers.SimpleRouter()
+router = BulkRouter()
 router.register(r"users", UserViewSet, basename="users")
 router.register(r"tasks", TaskViewSet, basename="tasks")
 router.register(r"tags", TagViewSet, basename="tags")
 router.register(r"statuses", StatusViewSet, basename="statuses")
+router.register(r"current-user", CurrentUserViewSet, basename="current_user")
 
 urlpatterns = [
     re_path(

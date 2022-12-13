@@ -18,7 +18,11 @@ class TestUserViewSet(TestViewSetBase):
     @staticmethod
     def expected_details(entity: dict, attributes: dict) -> dict:
         del attributes["password"]
-        return {**attributes, "id": entity["id"], "avatar_picture": entity["avatar_picture"]}
+        return {
+            **attributes,
+            "id": entity["id"],
+            "avatar_picture": entity["avatar_picture"],
+        }
 
     def test_create(self) -> None:
         user = self.create(self.user_attributes)
@@ -62,3 +66,29 @@ class TestUserViewSet(TestViewSetBase):
                 "File extension “pdf” is not allowed. Allowed extensions are: jpeg, jpg, png."
             ]
         }
+
+
+class TestCurrentUserViewSet(TestViewSetBase):
+    basename = "current_user"
+
+    @classmethod
+    def setUpTestData(cls) -> None:
+        super().setUpTestData()
+
+    def test_retrieve(self):
+        user = self.single_resource()
+
+        assert user == {
+            "id": self.user.id,
+            "email": self.user.email,
+            "first_name": self.user.first_name,
+            "last_name": self.user.last_name,
+            "role": self.user.role,
+            "username": self.user.username,
+        }
+
+    def test_patch(self):
+        self.patch_single_resource({"first_name": "TestName"})
+
+        user = self.single_resource()
+        assert user["first_name"] == "TestName"
