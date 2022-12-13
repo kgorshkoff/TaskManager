@@ -31,6 +31,8 @@ from main.views import (
     TagViewSet,
     TaskViewSet,
     UserViewSet,
+    CountdownJobViewSet,
+    AsyncJobViewSet,
 )
 
 schema_view = get_schema_view(
@@ -52,6 +54,8 @@ router.register(r"tasks", TaskViewSet, basename="tasks")
 router.register(r"tags", TagViewSet, basename="tags")
 router.register(r"statuses", StatusViewSet, basename="statuses")
 router.register(r"current-user", CurrentUserViewSet, basename="current_user")
+router.register(r"countdown", CountdownJobViewSet, basename="countdown")
+router.register(r"jobs", AsyncJobViewSet, basename="jobs")
 
 urlpatterns = [
     re_path(
