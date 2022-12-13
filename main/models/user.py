@@ -15,5 +15,4 @@ class User(AbstractUser):
     role = models.CharField(
         max_length=255, default=Roles.DEVELOPER, choices=Roles.choices
     )
-    avatar_picture = models.ImageField(null=True    , storage=public_storage)
-
+    avatar_picture = models.ImageField(null=True, storage=public_storage)
