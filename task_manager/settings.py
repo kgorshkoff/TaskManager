@@ -120,6 +120,29 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "task_manager": {
+            "format": (
+                "{asctime} {levelname} {message}"
+            ),
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "formatter": "task_manager",
+            "class": "logging.StreamHandler",
+        }
+    },
+    "loggers": {
+        "django.server": {"level": "INFO", "handlers": ["console"]},
+    }
+}
+
 AUTH_USER_MODEL = "main.User"
 
 # Internationalization
